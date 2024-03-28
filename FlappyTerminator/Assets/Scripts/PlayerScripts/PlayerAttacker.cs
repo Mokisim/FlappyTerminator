@@ -7,10 +7,11 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private float _attackSpeed;
-
+    
     private float _nextAttackTime;
     private WaitForSeconds _wait;
     private InputReader _inputReader;
+    private float _destroyDelay = 2f;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private void Update()
     {
-        if(_inputReader.GetShootInput() == true && Time.time >= _nextAttackTime)
+        if (_inputReader.GetShootInput() == true && Time.time >= _nextAttackTime)
         {
             StartCoroutine(Attack());
         }
@@ -29,12 +30,20 @@ public class PlayerAttacker : MonoBehaviour
     private IEnumerator Attack()
     {
         _nextAttackTime = Time.time + _attackSpeed;
-        Instantiate(_bulletPrefab, _attackPoint.position, Quaternion.identity);
+        Bullet bullet = Instantiate(_bulletPrefab, _attackPoint.position, _attackPoint.rotation);
+
+        DestroyWithDelay(bullet);
+
         yield return _wait;
     }
 
     private void OnDisable()
     {
         StopCoroutine(Attack());
+    }
+
+    private void DestroyWithDelay(Bullet bullet)
+    {
+        Destroy(bullet.gameObject, _destroyDelay);
     }
 }

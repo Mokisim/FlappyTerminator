@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 649833406359896489}
   - component: {fileID: 5334829695361618132}
   - component: {fileID: 7923115996488080091}
+  - component: {fileID: 7950892100075496856}
   - component: {fileID: 3896256578839987217}
   m_Layer: 0
   m_Name: Player
@@ -39,6 +40,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6259686273127723142}
+  - {fileID: 2372535072369253774}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4803475206781964237
@@ -152,7 +154,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.015524745}
+  m_Offset: {x: 0.007959306, y: 0.013932824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -163,7 +165,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26, y: 0.12345767}
+  m_Size: {x: 0.24408138, y: 0.08419061}
   m_EdgeRadius: 0
 --- !u!114 &7621703291715765351
 MonoBehaviour:
@@ -189,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5750e782adc39644cbd60bd157da1d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tapForce: 4
+  _tapForce: 3
   _speed: 2.5
   _rotationSpeed: 1
   _maxRotationZ: 35
@@ -209,6 +211,7 @@ MonoBehaviour:
   _attackPoint: {fileID: 6259686273127723142}
   _bulletPrefab: {fileID: 8970470991861827171, guid: 690f57650903bf543b80c9caae7356bd, type: 3}
   _attackSpeed: 0.3
+  _bulletsPool: {fileID: 0}
 --- !u!114 &5334829695361618132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +236,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67530ec8bc9898749adac8821608bc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7950892100075496856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702731335832021602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3730af6d50896e448da8e9fb6572f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3896256578839987217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +260,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81433cc403d58bf4bb67e18017dbec7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5636273917738606011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2372535072369253774}
+  m_Layer: 0
+  m_Name: BulletContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2372535072369253774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636273917738606011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1392, y: -0.0188, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6759951704266649026}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6788202674453833346
 GameObject:
   m_ObjectHideFlags: 0

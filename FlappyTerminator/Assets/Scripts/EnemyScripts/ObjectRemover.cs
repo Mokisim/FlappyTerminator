@@ -15,5 +15,10 @@ public class ObjectRemover : MonoBehaviour
         {
             _pool.PutObject(zone);
         }
+
+        if(other.TryGetComponent(out Bullet bullet))
+        {
+            bullet.gameObject.SetActive(false);
+        }
     }
 }

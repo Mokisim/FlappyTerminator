@@ -21,7 +21,7 @@ public class ObjectPool : MonoBehaviour
 
     public Enemy GetObject()
     {
-        if( _pool.Count == 0 )
+        if (_pool.Count == 0)
         {
             var enemy = Instantiate(_prefab);
             enemy.transform.parent = _container;
@@ -61,5 +61,10 @@ public class ObjectPool : MonoBehaviour
     {
         _pool.Clear();
         _scoreZonePool.Clear();
+        
+        for (int i = 0; i < _container.childCount; i++)
+        {
+            Destroy(_container.GetChild(i).gameObject);
+        }
     }
 }

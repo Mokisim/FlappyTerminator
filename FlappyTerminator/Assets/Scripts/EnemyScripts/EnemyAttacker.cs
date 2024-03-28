@@ -5,10 +5,11 @@ public class EnemyAttacker : MonoBehaviour
 {
     [SerializeField] private Transform _enemyAttackPoint;
     [SerializeField] private float _attackSpeed;
-    [SerializeField] Rigidbody2D _bulletPrefab;
+    [SerializeField] private Bullet _bulletPrefab;
 
     private WaitForSeconds _wait;
     private float _nextAttackTime;
+    private float _destroyDelay = 2f;
 
     private void Start()
     {
@@ -26,12 +27,20 @@ public class EnemyAttacker : MonoBehaviour
     private IEnumerator Attack()
     {
         _nextAttackTime = Time.time + _attackSpeed;
-        Instantiate(_bulletPrefab, _enemyAttackPoint.position, Quaternion.identity);
+        Bullet bullet = Instantiate(_bulletPrefab, _enemyAttackPoint.position, _enemyAttackPoint.rotation);
+
+        DestroyWithDelay(bullet);
+
         yield return _wait;
     }
 
     private void OnDisable()
     {
         StopCoroutine(Attack());
+    }
+
+    private void DestroyWithDelay(Bullet bullet)
+    {
+        Destroy(bullet.gameObject, _destroyDelay);
     }
 }

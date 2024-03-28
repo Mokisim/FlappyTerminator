@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7842554802031776136}
   - component: {fileID: 8970470991861827171}
   - component: {fileID: 4382097745600909133}
+  - component: {fileID: -5650778364327425292}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -30,13 +31,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6978180183233575791}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -8.273, y: -4.046, z: 0.025482148}
-  m_LocalScale: {x: 0.6146288, y: 0.84270424, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.2906, y: -4.035, z: 0.025482148}
+  m_LocalScale: {x: 0.7996935, y: 1.2090278, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8542252509793903899
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +146,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3be6a247ac2a5741bceb299a2ab61a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 1
 --- !u!114 &4382097745600909133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,5 +206,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 119cf4f892a75cc4ca32b18ceeb09433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5650778364327425292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6978180183233575791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808bd7a7ff008ed4eb1076c2be945b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

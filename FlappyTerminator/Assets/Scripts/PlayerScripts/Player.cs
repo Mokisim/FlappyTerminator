@@ -34,11 +34,6 @@ public class Player : MonoBehaviour
         _playerMovement.Reset();
     }
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
-
     private void ProcessCollision(IInteractable interactable)
     {
         if (interactable.TryGetComponent(out Enemy enemy) == true)
@@ -53,10 +48,9 @@ public class Player : MonoBehaviour
         {
             GameOver?.Invoke();
         }
-        else if(interactable.TryGetComponent(out Bullet bullet) == true)
+        else if(interactable.TryGetComponent(out EnemyBullet enemyBullet) == true)
         {
             GameOver?.Invoke();
-            Debug.Log("dead");
         }
     }
 
