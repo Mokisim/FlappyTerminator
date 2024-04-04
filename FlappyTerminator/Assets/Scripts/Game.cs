@@ -1,11 +1,24 @@
+using System;
 using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public event Action GameOver;
+
     [SerializeField] private Player _player;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndGameScreen _endScreen;
     [SerializeField] private ObjectPool _objectPool;
+    [SerializeField] private ObjectPool _playerBulletsPool;
+    [SerializeField] private ObjectPool _enemyBulletsPool;
+    [SerializeField] private Transform _container;
+    [SerializeField] private ScoreZone _scoreZone;
+
+    private void Start()
+    {
+        Time.timeScale = 0;
+        _startScreen.Open();
+    }
     
     private void OnEnable()
     {
@@ -21,17 +34,12 @@ public class Game : MonoBehaviour
         _player.GameOver -= OnGameOver;
     }
 
-    private void Start()
-    {
-        Time.timeScale = 0;
-        _startScreen.Open();
-    }
-
     private void OnGameOver()
     {
+        GameOver?.Invoke();
         Time.timeScale = 0;
         _endScreen.Open();
-        _objectPool.Reset();
+        _scoreZone.transform.position = _container.transform.position;
     }
 
     private void StartGame()

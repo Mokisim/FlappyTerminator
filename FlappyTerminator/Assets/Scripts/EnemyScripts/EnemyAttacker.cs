@@ -1,46 +1,22 @@
-using System.Collections;
 using UnityEngine;
 
-public class EnemyAttacker : MonoBehaviour
+public class EnemyAttacker : Attacker
 {
-    [SerializeField] private Transform _enemyAttackPoint;
-    [SerializeField] private float _attackSpeed;
-    [SerializeField] private Bullet _bulletPrefab;
-
-    private WaitForSeconds _wait;
-    private float _nextAttackTime;
-    private float _destroyDelay = 2f;
-
     private void Start()
     {
-        _wait = new WaitForSeconds(_attackSpeed);
+        Wait = new WaitForSeconds(AttackSpeed);
     }
 
     private void Update()
     {
-        if (Time.time >= _nextAttackTime)
+        if (Time.time >= NextAttackTime)
         {
             StartCoroutine(Attack());
         }
     }
 
-    private IEnumerator Attack()
-    {
-        _nextAttackTime = Time.time + _attackSpeed;
-        Bullet bullet = Instantiate(_bulletPrefab, _enemyAttackPoint.position, _enemyAttackPoint.rotation);
-
-        DestroyWithDelay(bullet);
-
-        yield return _wait;
-    }
-
     private void OnDisable()
     {
         StopCoroutine(Attack());
-    }
-
-    private void DestroyWithDelay(Bullet bullet)
-    {
-        Destroy(bullet.gameObject, _destroyDelay);
     }
 }

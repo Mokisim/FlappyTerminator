@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1023729797288149601}
+  - component: {fileID: 7181418556785963577}
+  - component: {fileID: 6260921990586700445}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -25,12 +27,43 @@ Transform:
   m_GameObject: {fileID: 2346203929034368995}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: -0.015, z: 0}
+  m_LocalPosition: {x: 0.235, y: -0.015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4404006415050325568}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7181418556785963577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346203929034368995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bd3f89fcf08f7418a4d63eb6b046f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 0}
+  _prefab: {fileID: 7194171301476393337, guid: 890844d27119a8147b914b2ecfe306b7, type: 3}
+  _game: {fileID: 0}
+--- !u!114 &6260921990586700445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2346203929034368995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2ed1a579cd19040bcab0b6a1daec88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 8970470991861827171, guid: 890844d27119a8147b914b2ecfe306b7, type: 3}
+  _pool: {fileID: 7181418556785963577}
+  _attackPoint: {fileID: 1023729797288149601}
+  _attacker: {fileID: -2997442962532819106}
 --- !u!1 &2718788382683359300
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +78,7 @@ GameObject:
   - component: {fileID: -3346472569707963223}
   - component: {fileID: -5429780510258761819}
   - component: {fileID: -2997442962532819106}
+  - component: {fileID: 1820490207902272321}
   m_Layer: 0
   m_Name: enemy1
   m_TagString: Untagged
@@ -60,15 +94,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2718788382683359300}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.251, y: -3.127, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1023729797288149601}
-  - {fileID: 7555383247423771535}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4091110458347899613
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -202,37 +235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508bbef0a4474d748bafb98190086ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyAttackPoint: {fileID: 1023729797288149601}
-  _attackSpeed: 1.5
-  _bulletPrefab: {fileID: 8970470991861827171, guid: 890844d27119a8147b914b2ecfe306b7, type: 3}
---- !u!1 &3186812845569950746
-GameObject:
+  AttackPoint: {fileID: 1023729797288149601}
+  BulletPrefab: {fileID: 8970470991861827171, guid: 890844d27119a8147b914b2ecfe306b7, type: 3}
+  AttackSpeed: 1
+--- !u!114 &1820490207902272321
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7555383247423771535}
-  m_Layer: 0
-  m_Name: EnemyBulletContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7555383247423771535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3186812845569950746}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: -0.015, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4404006415050325568}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2718788382683359300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08649744ae1f3f343884b18916fd7c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -36,21 +36,13 @@ public class Player : MonoBehaviour
 
     private void ProcessCollision(IInteractable interactable)
     {
-        if (interactable.TryGetComponent(out Enemy enemy) == true)
+        if (interactable.TryGetComponent(out Enemy enemy) == true || interactable.TryGetComponent(out Bullet bullet) == true || interactable.TryGetComponent(out Ground ground) == true)
         {
             GameOver?.Invoke();
         }
         else if (interactable.TryGetComponent(out ScoreZone scoreZone) == true)
         {
             _scoreCounter.Add();
-        }
-        else if(interactable.TryGetComponent(out Ground ground) == true)
-        {
-            GameOver?.Invoke();
-        }
-        else if(interactable.TryGetComponent(out EnemyBullet enemyBullet) == true)
-        {
-            GameOver?.Invoke();
         }
     }
 

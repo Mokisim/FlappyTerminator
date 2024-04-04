@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public event Action<Transform> EnemySpawned;
+
     [SerializeField] private float _spawnRate;
     [SerializeField] private ObjectPool _pool;
     [SerializeField] private int _maxObjectCount;
-    [SerializeField]private List<Transform> _points;
+    [SerializeField] private List<Transform> _points;
     
     private int _minObjectCount = 1;
-    
+
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
@@ -39,29 +42,22 @@ public class EnemySpawner : MonoBehaviour
             enemy.transform.position = spawnPoint;
         }
 
-        Vector3 scoreZoneSpawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-        var scoreZone = _pool.GetZoneObject();
-
-        scoreZone.gameObject.SetActive(true);
-        scoreZone.transform.position = scoreZoneSpawnPoint;
+        EnemySpawned?.Invoke(transform);
     }
 
     private List<Transform> GenerateRandomSpawnPoints()
     {
-        int randomObjectCount = Random.Range(_minObjectCount, _maxObjectCount);
+        int randomObjectCount = UnityEngine.Random.Range(_minObjectCount, _maxObjectCount);
         List<Transform> randomIndices = new List<Transform>(_points);
-        List<Transform> randomPoints = new List<Transform>(randomObjectCount);
         int minRandomNumber = 0;
 
-        while (randomPoints.Count < randomObjectCount)
+        while (randomIndices.Count > randomObjectCount)
         {
-            int randomIndex = Random.Range(minRandomNumber, randomIndices.Count);
+            int randomIndex = UnityEngine.Random.Range(minRandomNumber, randomIndices.Count);
 
-            randomPoints.Add(randomIndices[randomIndex]);
             randomIndices.RemoveAt(randomIndex);
         }
 
-        return randomPoints;
+        return randomIndices;
     }
 }
